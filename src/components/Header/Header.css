@@ -4,11 +4,24 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 0 50pt;
 }
 
-.navbar {
-    padding: 10px 20px;
-    width: 100%;
+@media (min-width: 768px) and (max-width: 1200px) {
+    .header-container {
+        padding: 0 50pt;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header-container {
+        padding: 0 100pt;
+    }
+}
+
+.navbar-brand, .info {
+    flex-basis: 200px; 
+    flex-shrink: 0; 
 }
 
 .link-group {
@@ -30,7 +43,6 @@
     text-decoration: none;
     font-weight: lighter; 
     padding: 10px 20px;
-    
 }
 
 .nav-link.active {
@@ -39,5 +51,20 @@
 }
 
 .info {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-basis: 200px;
+}
 
+.signup {
+    background-color: transparent;
+    border: 2px rgb(31, 31, 31) solid;
+    border-radius: 8px;
+    color: white;
+}
+
+.search {
+    color: white;
+    padding: 10px 20px;
 }
