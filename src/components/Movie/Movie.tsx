@@ -44,8 +44,7 @@ export const Movies = () => {
                                             </div>
                                             <div className="movie-title">
                                                 <h4>{movie.title}</h4>
-                                            </div>
-                                            <div className="movie-buttons-container">
+                                                <div className="movie-buttons-container">
                                                 <Link to={`/Trailer/${movie.trailerLink.substring(movie.trailerLink.length - 11)}`}>
                                                     <div className="play-button-icon-container">
                                                         <FontAwesomeIcon className="play-button-icon"
@@ -53,7 +52,7 @@ export const Movies = () => {
                                                         />
                                                     </div>
                                                 </Link>
-        
+                                            </div>
                                             </div>
                                         </div>
                                     </div>
