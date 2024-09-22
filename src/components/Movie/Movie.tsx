@@ -1,11 +1,13 @@
 import { CSSProperties, useEffect, useState } from 'react';
 import { Movie } from '../types/Movie';
 import './Movie.css';
-import { faFilter, faPlay, faSort } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlay, faFilter, faPlay, faSort } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Paper } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 import { Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+
 
 interface CustomCSSProperties extends CSSProperties {
     "--img"?: string;
@@ -13,7 +15,6 @@ interface CustomCSSProperties extends CSSProperties {
 
 export const Movies = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
-    const [randomMovies, setRandomMovies] = useState<Movie[]>([]);
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -21,13 +22,7 @@ export const Movies = () => {
                 const response = await fetch('http://localhost:8080/api/V1/movies');
                 const data: Movie[] = await response.json();
                 setMovies(data);
-                // Вибір випадкових 5 фільмів
-                if (data.length > 5) {
-                    const shuffled = data.sort(() => 0.5 - Math.random());
-                    setRandomMovies(shuffled.slice(0, 5));
-                } else {
-                    setRandomMovies(data);
-                }
+        
             } catch (error) {
                 console.error('Error fetching movies:', error);
             }
@@ -41,7 +36,7 @@ export const Movies = () => {
             <div className='movie-carousel-container'>
                 <Carousel className='custom-carousel'>
                     {
-                        randomMovies.map((movie) => {
+                        movies.map((movie) => {
                             return (
                                 <Paper key={movie.imdbId}>
                                     <div className='movie-card-container'>
@@ -76,12 +71,15 @@ export const Movies = () => {
                 <div className='sort-button-icon-container'><FontAwesomeIcon className='sort-button-icon' icon={faSort}/>Sort</div>
                 <div className='filter-button-icon-container'><FontAwesomeIcon className='filter-button-icon' icon={faFilter}/>Filter</div>
             </div>
-            <div className='movies-list'>
+            <div className='movies-list-container'>
                 {movies.map((movie) => (
+                    <NavLink to={`/Movie/${movie.imdbId}`} key={movie.imdbId} className="movie-link">
                     <div className="movie-card-list" key={movie.imdbId}>
+                        <FontAwesomeIcon icon={faCirclePlay} className="play-icon" />
                         <img src={movie.poster} alt={movie.title} className="movie-poster-list" />
-                        <h3 className="movie-title-list">{movie.title}</h3>
                     </div>
+                    <h3 className="movie-title-list">{movie.title}</h3>
+                    </NavLink>
                 ))}
             </div>
         </div>
