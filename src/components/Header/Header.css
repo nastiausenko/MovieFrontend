@@ -15,12 +15,12 @@
 
 @media (min-width: 1200px) {
     .header-container {
-        padding: 0 100pt;
+        padding: 0 10%;
     }
 }
 
 .navbar-brand, .info {
-    flex-basis: 10%; 
+    flex-basis: 142px; 
     flex-shrink: 0; 
     text-decoration: none;
 }
@@ -83,7 +83,7 @@
     display: flex; 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .link-group {
         display: none;
         align-items: center;
@@ -101,6 +101,10 @@
 
     .signup{
         display: none;
+    }
+
+    .navbar-brand, .info {
+        flex-basis: 100px; 
     }
 }
 
