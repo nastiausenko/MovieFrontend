@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 7%;
+    padding: 0 10%;
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
@@ -83,15 +83,46 @@
     display: flex; 
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .link-group {
         display: none;
         align-items: center;
     }
     
     .link-group.open {
-        display: flex;
+        top: 200%;
+        right: 10%;
         flex-direction: column;
+        position: absolute;
+        z-index: 1000;
+    }
+
+    .menu-icon {
+        display: block; 
+        color: white;
+    }
+
+    .signup{
+        display: none;
+    }
+
+    .navbar-brand, .info {
+        flex-basis: 100px; 
+    }
+}
+
+@media (min-width: 768px) and (max-width: 880px) {
+    .link-group {
+        display: none;
+        align-items: center;
+    }
+    
+    .link-group.open {
+        top: 200%;
+        right: 5%;
+        flex-direction: column;
+        position: absolute;
+        z-index: 1000;
     }
 
     .menu-icon {
